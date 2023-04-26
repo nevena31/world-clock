@@ -12,6 +12,19 @@ function updateTime() {
     );
   }
 
+  //Bangkok
+  let bangkokElement = document.querySelector("#bangkok");
+  if (bangkokElement) {
+    let bangkokDateElement = bangkokElement.querySelector(".date");
+    let bangkokTimeElement = bangkokElement.querySelector(".time");
+    let bangkokTime = moment().tz("Asia/Bangkok");
+
+    bangkokDateElement.innerHTML = bangkokTime.format("MMMM Do YYYY");
+    bangkokTimeElement.innerHTML = bangkokTime.format(
+      "h:mm:ss [<small>]A[</small>]"
+    );
+  }
+
   // Paris
   let parisElement = document.querySelector("#paris");
   if (parisElement) {
@@ -43,7 +56,9 @@ function updateCity(event) {
           <div class="time">${cityTime.format(
             "h:mm:ss"
           )} <small>${cityTime.format("A")}</small></div>
-        </div>`;
+        </div>
+        <a href="/">All cities</a>
+        `;
 }
 updateTime();
 setInterval(updateTime, 1000);
